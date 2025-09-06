@@ -27,7 +27,7 @@
 
     async function showElement(element) {
       element.classList.remove("hidden")
-      element.setAttribute("inert", false)
+      element.removeAttribute("inert")
     }
 
     async function switchScene(oldScene, nextScene, onSceneSwitch=undefined) {
@@ -71,11 +71,19 @@
 
       setTimeout(loopRobSequence, 0)
     }
+
+    function showDialog() {
+      console.log("Open")
+      document.querySelector("dialog").showModal()
+    }
   </script>
 
   <style>
     * {
       box-sizing: border-box;
+      --cursor-default: url("sprites/cursor1.png") 0 0, default;
+      --cursor-pointer: url("sprites/cursor2.png") 0 0, pointer;
+
     }
 
     .hidden {
@@ -90,6 +98,7 @@
     main {
       width: 100vw;
       height: 100vh;
+      cursor: var(--cursor-default);
 
       display: flex;
       align-items: center;
@@ -97,6 +106,15 @@
 
       image-rendering: pixelated;
       background-color: black;
+    }
+
+    img {
+        -webkit-user-drag: none;
+        user-drag: none;
+        -webkit-user-select: none;
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+        user-select: none; 
     }
 
     section {
@@ -119,6 +137,7 @@
       max-width: 100%;
       height: 100%;
       object-fit: contain;
+      cursor: var(--cursor-pointer);
     }
 
     .elevator-section {
@@ -145,10 +164,27 @@
       bottom: 10cqi;
       height: 30cqi;
       object-fit: contain;
+      cursor: var(--cursor-pointer);
+    }
+
+    .elevator-section .elevator-button-img {
+      position: absolute;
+      bottom: 42cqi;
+      right: 10cqi;
+      width: 15cqi;
+      object-fit: contain;
+    }
+
+    .elevator-section .elevator-speaker-grill-img {
+      position: absolute;
+      bottom: 65cqi;
+      right: 10cqi;
+      width: 15cqi;
+      object-fit: contain;
     }
 
     .elevator-section dialog {
-      width: 100cqw;
+      width: 80cqw;
       min-height: 30cqh;
     }
   </style>
@@ -159,8 +195,10 @@
         <img class="elevator-img" src="sprites/elevator/elevator1.png" onclick="runElevatorSequence()"/>
       </section>
       <section class="elevator-section hidden">
-        <img class="rob-img" src="sprites/rob/rob1.png">
-        <dialog>Hello</dialog>
+        <img class="rob-img" src="sprites/rob/rob1.png" onclick="showDialog('Hi!')">
+        <img class="elevator-button-img" src="sprites/elevator-button.png">
+        <img class="elevator-speaker-grill-img" src="sprites/elevator-speaker-grill.png">
+        <dialog closedby="any">Hello</dialog>
       </section>
     </main>
   </body>
