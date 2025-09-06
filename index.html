@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Supremely Uncomfortable Place</title>
   </head>
+
+  <script>
+    async function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function playSequence(frames=[], msTimeout=100, element, onSequenceEnd) {
+      for (let frame of frames) {
+        element.setAttribute("src", frame.src)
+        await wait(msTimeout)
+      }
+
+      if (onSequenceEnd) {
+        onSequenceEnd()
+      }
+    }
+
+    async function switchScene(old, next) {
+      
+    }
+
+    function startElevatorSequence() {
+      playSequence([
+        { src: "/sprites/elevator/elevator1.png" },
+        { src: "/sprites/elevator/elevator2.png" },
+        { src: "/sprites/elevator/elevator3.png" },
+        { src: "/sprites/elevator/elevator4.png" },
+      ], 100, document.getElementsByClassName("elevator-img")[0])
+    }
+  </script>
+
   <style>
     * {
       box-sizing: border-box;
@@ -17,6 +48,7 @@
       height: 100vh;
       image-rendering: pixelated;
     }
+
     .start-section {
       background: url("sprites/desert.png");
       background-size: cover;
@@ -25,18 +57,20 @@
       display: flex;
       justify-content: center;
     }
+        
     .start-section .elevator-img {
       position: fixed;
       bottom: 0;
       max-height: 60vh;
       max-width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   </style>
   <body>
     <section class="start-section">
-      <img class="elevator-img" src="sprites/elevator/elevator1.png" />
+      <img class="elevator-img" src="sprites/elevator/elevator1.png" onclick="startElevatorSequence()"/>
     </section>
+    <section class="elevator-section" hidden></section>
   </body>
 </html>
