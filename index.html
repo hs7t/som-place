@@ -102,6 +102,7 @@
     section {
       display: flex;
       justify-content: center;
+      position: relative;
     }
 
     .start-section {
@@ -121,6 +122,7 @@
     }
 
     .elevator-section {
+      container-type: inline-size;
       aspect-ratio: 1 / 1;
       width: min(100vw, 100vh);
       height: min(100vw, 100vh);
@@ -139,15 +141,15 @@
     }
 
     .elevator-section .rob-img {
-      position: fixed;
-      bottom: 20%;
-      height: 30%;
+      position: absolute;
+      bottom: 10cqi;
+      height: 30cqi;
       object-fit: contain;
     }
 
     .elevator-section dialog {
-      width: 100%;
-      min-height: 30%;
+      width: 100cqw;
+      min-height: 30cqh;
     }
   </style>
 
