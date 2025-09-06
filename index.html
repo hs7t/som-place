@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supremely Uncomfortable Place</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      image-rendering: pixelated;
+    }
+    .start-section {
+      background: url("sprites/desert.png");
+      background-size: cover;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+    .start-section .elevator-img {
+      position: fixed;
+      bottom: 0;
+      max-height: 60vh;
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+  <body>
+    <section class="start-section">
+      <img class="elevator-img" src="sprites/elevator/elevator1.png" />
+    </section>
+  </body>
+</html>
