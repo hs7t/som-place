@@ -16,26 +16,52 @@
     <title>Supremely Uncomfortable Place</title>
   </head>
 
+  <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
+
   <script>
-    let elevatorMusic = new Audio("audio/elevator.m4a")
-    elevatorMusic.loop = true
+    let state = {
+      elevator: {
+        clicks: 0,
+        open: false,
+      },
+    }
+
+    let elevatorMusic = new Howl({
+      src: ['audio/elevator.m4a'],
+      loop: true,
+      volume: 0.3,
+      onend: function() {
+        console.log("Stopped elevator music")
+      }
+    })
+
+    let elevatorWhirr = new Howl({
+      src: ['audio/elevator-whirr.m4a'],
+      loop: true,
+      volume: 0.5,
+      onend: function() {
+        console.log("Stopped elevator music")
+      }
+    })
+
 
     async function wait(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function hideElement(element) {
+    function hideElement(element) {
       element.classList.add("hidden")
       element.setAttribute("inert", true)
     }
 
-    async function showElement(element) {
+    function showElement(element) {
       element.classList.remove("hidden")
       element.removeAttribute("inert")
     }
 
-    async function switchScene(oldScene, nextScene, onSceneSwitch=undefined) {
+    function switchScene(oldScene, nextScene, onSceneSwitch=undefined) {
       hideElement(oldScene)
+      Howler.stop()
       showElement(nextScene)
 
       if (onSceneSwitch != undefined) {
@@ -54,16 +80,30 @@
       }
     }
 
-    async function runElevatorSequence() {
-      await playSequence([
-        { src: "sprites/elevator/elevator1.png" },
-        { src: "sprites/elevator/elevator2.png" },
-        { src: "sprites/elevator/elevator3.png" },
-        { src: "sprites/elevator/elevator4.png" },
-      ], 100, document.querySelector(".elevator-img"))
+    async function processElevatorClick() {
+      if (state.elevator.open == false) {
+        await playSequence([
+          { src: "sprites/elevator/elevator1.png" },
+          { src: "sprites/elevator/elevator2.png" },
+          { src: "sprites/elevator/elevator3.png" },
+          { src: "sprites/elevator/elevator4.png" },
+        ], 100, document.querySelector(".elevator-img"))
+        state.elevator.open = true;
+      }
 
       await switchScene(document.querySelector(".start-section"), document.querySelector(".elevator-section"), loopRobSequence)
-      await elevatorMusic.play()
+      elevatorMusic.play()
+    }
+
+    async function processElevatorButtonClick() {
+      document.querySelector(".elevator-section").classList.add("whirring")
+      elevatorMusic.pause()
+
+      elevatorWhirr.play()
+      elevatorWhirr.on('end', () => {
+        document.querySelector(".elevator-section").classList.remove("whirring")
+        switchScene(document.querySelector(".elevator-section"), document.querySelector(".start-section"))
+      })
     }
 
     async function loopRobSequence() {
@@ -96,6 +136,7 @@
     body {
       margin: 0;
       padding: 0;
+      overflow: hidden;
     }
 
     main {
@@ -177,6 +218,7 @@
       right: 10cqi;
       width: 15cqi;
       object-fit: contain;
+      cursor: var(--cursor-pointer);
     }
 
     .elevator-section .elevator-speaker-grill-img {
@@ -196,16 +238,32 @@
       font-size: 2rem;
       outline: none;
     }
+
+    .whirring {
+      animation: whirr 200ms infinite;
+    }
+
+    @keyframes whirr {
+      0% {
+        transform: translate(1cqw, 1cqw);
+      }
+      80% {
+        transform: translate(-1cqw, -1cqw);
+      }
+      100% {
+        transform: translate(0cqw, 0cqw);
+      }
+    }
   </style>
 
   <body>
     <main>
       <section class="start-section">
-        <img class="elevator-img" src="sprites/elevator/elevator1.png" onclick="runElevatorSequence()"/>
+        <img class="elevator-img" src="sprites/elevator/elevator1.png" onclick="processElevatorClick()"/>
       </section>
       <section class="elevator-section hidden">
         <img class="rob-img" src="sprites/rob/rob1.png" onclick="showDialog()">
-        <img class="elevator-button-img" src="sprites/elevator-button.png">
+        <img class="elevator-button-img" src="sprites/elevator-button.png" onclick="processElevatorButtonClick()">
         <img class="elevator-speaker-grill-img" src="sprites/elevator-speaker-grill.png">
         <dialog closedby="any">
           <p>Hey what's uppp... I'm Rob... Rob the rock... haha!</p>
