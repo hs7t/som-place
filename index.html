@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+
     <link rel="preload" href="sprites/elevator/elevator1.png" as="image">
     <link rel="preload" href="sprites/elevator/elevator2.png" as="image">
     <link rel="preload" href="sprites/elevator/elevator3.png" as="image">
@@ -83,7 +87,6 @@
       box-sizing: border-box;
       --cursor-default: url("sprites/cursor1.png") 0 0, default;
       --cursor-pointer: url("sprites/cursor2.png") 0 0, pointer;
-
     }
 
     .hidden {
@@ -103,6 +106,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: "Tiny5", monospace, sans-serif;
 
       image-rendering: pixelated;
       background-color: black;
@@ -184,8 +188,13 @@
     }
 
     .elevator-section dialog {
+      background-color: black;
+      color: white;
+      border: 1cqw solid white;
       width: 80cqw;
       min-height: 30cqh;
+      font-size: 2rem;
+      outline: none;
     }
   </style>
 
@@ -198,7 +207,9 @@
         <img class="rob-img" src="sprites/rob/rob1.png" onclick="showDialog()">
         <img class="elevator-button-img" src="sprites/elevator-button.png">
         <img class="elevator-speaker-grill-img" src="sprites/elevator-speaker-grill.png">
-        <dialog closedby="any">Hey what's uppp... I'm Rob... Rob the rock... haha!</dialog>
+        <dialog closedby="any">
+          <p>Hey what's uppp... I'm Rob... Rob the rock... haha!</p>
+        </dialog>
       </section>
     </main>
   </body>
