@@ -17,15 +17,15 @@ let elevatorMusic = new Howl({
 let elevatorWhirr = new Howl({
   src: ["audio/elevator-whirr.m4a"],
   loop: true,
-  volume: 0.5,
+  volume: 1,
   onend: function () {
     console.log("Stopped elevator whirr");
   },
 });
 
 let beep = new Howl({
-  src: ["audio/beep.wav"],
-  volume: 0.5,
+  src: ["audio/beep.m4a"],
+  volume: 0.2,
   onend: function () {
     console.log("Ran beep");
   },
