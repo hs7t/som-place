@@ -72,6 +72,8 @@ async function playSequence(
 }
 
 async function processElevatorClick() {
+  state.elevator.clicks++;
+
   if (state.elevator.open == false) {
     await playSequence(
       [
@@ -95,12 +97,12 @@ async function processElevatorClick() {
 }
 
 async function processElevatorButtonClick() {
-  document.querySelector(".elevator-section").classList.add("whirring");
   elevatorMusic.pause();
 
   beep.play();
   beep.on("end", () => {
     elevatorWhirr.play();
+    document.querySelector(".elevator-section").classList.add("whirring");
   });
 
   elevatorWhirr.on("end", () => {
