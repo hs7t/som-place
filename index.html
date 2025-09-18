@@ -4,21 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="preload" href="sprites/elevator/elevator1.png" as="image">
-    <link rel="preload" href="sprites/elevator/elevator2.png" as="image">
-    <link rel="preload" href="sprites/elevator/elevator3.png" as="image">
-    <link rel="preload" href="sprites/elevator/elevator4.png" as="image">
+    <link rel="preload" href="sprites/elevator/elevator1.png" as="image" />
+    <link rel="preload" href="sprites/elevator/elevator2.png" as="image" />
+    <link rel="preload" href="sprites/elevator/elevator3.png" as="image" />
+    <link rel="preload" href="sprites/elevator/elevator4.png" as="image" />
 
     <title>Supremely Uncomfortable Place</title>
   </head>
 
   <script src="https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js"></script>
   <script src="./script.js"></script>
-  
+
   <style>
     * {
       box-sizing: border-box;
@@ -51,12 +54,12 @@
     }
 
     img {
-        -webkit-user-drag: none;
-        user-drag: none;
-        -webkit-user-select: none;
-        -moz-user-select: none; 
-        -ms-user-select: none; 
-        user-select: none; 
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     section {
@@ -97,7 +100,7 @@
       top: 50%;
       right: 6cqi;
     }
-        
+
     .start-section .elevator-img {
       position: fixed;
       bottom: 0;
@@ -182,17 +185,38 @@
   <body>
     <main>
       <section class="start-section">
-        <img class="elevator-img" src="sprites/elevator/elevator1.png" onclick="processElevatorClick()"/>
-        <img class="compass-img" id="map-button" src="sprites/compass.png">
+        <img
+          class="elevator-img"
+          src="sprites/elevator/elevator1.png"
+          onclick="processElevatorClick()"
+        />
+        <img class="compass-img" id="map-button" src="sprites/compass.png" />
         <dialog id="map-dialog">
-          <img class="scene-of-the-crime linkout" src="./sprites/linkouts/sceneofthecrime.png">
-          <img class="silly-hills linkout" src="./sprites/linkouts/sillyhills.png">
+          <img
+            class="scene-of-the-crime linkout"
+            src="./sprites/linkouts/sceneofthecrime.png"
+          />
+          <img
+            class="silly-hills linkout"
+            src="./sprites/linkouts/sillyhills.png"
+          />
         </dialog>
       </section>
       <section class="elevator-section hidden">
-        <img class="rob-img" src="sprites/rob/rob1.png" onclick="showDialog()">
-        <img class="elevator-button-img" src="sprites/elevator-button.png" onclick="processElevatorButtonClick()">
-        <img class="elevator-speaker-grill-img" src="sprites/elevator-speaker-grill.png">
+        <img
+          class="rob-img"
+          src="sprites/rob/rob1.png"
+          onclick="showDialog()"
+        />
+        <img
+          class="elevator-button-img"
+          src="sprites/elevator-button.png"
+          onclick="processElevatorButtonClick()"
+        />
+        <img
+          class="elevator-speaker-grill-img"
+          src="sprites/elevator-speaker-grill.png"
+        />
         <dialog closedby="any">
           <p>Hey what's uppp... I'm Rob... Rob the rock... haha!</p>
         </dialog>
