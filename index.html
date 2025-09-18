@@ -72,8 +72,18 @@
       background-size: cover;
     }
 
-    .start-section .linkout-badge-img {
-      height: clamp(10%, 5cqi, 15cqi);
+    #map-button {
+      width: clamp(4rem, 5cqi, 15cqi);
+      position: absolute;
+      padding: auto;
+      top: 6cqi;
+      transition: all 400ms;
+    }
+
+    #map-button:hover {
+      cursor: var(--cursor-pointer);
+      transform: rotate(5deg);
+      transition: all 300ms;
     }
 
     #crime-scene-linkout {
@@ -173,8 +183,11 @@
     <main>
       <section class="start-section">
         <img class="elevator-img" src="sprites/elevator/elevator1.png" onclick="processElevatorClick()"/>
-        <img class="linkout-badge-img" id="crime-scene-linkout" src="sprites/linkouts/sceneofthecrime.png">
-        <img class="linkout-badge-img" id="silly-hills-linkout" src="sprites/linkouts/sillyhills.png">
+        <img class="compass-img" id="map-button" src="sprites/compass.png">
+        <dialog id="map-dialog">
+          <img class="scene-of-the-crime linkout" src="./sprites/linkouts/sceneofthecrime.png">
+          <img class="silly-hills linkout" src="./sprites/linkouts/sillyhills.png">
+        </dialog>
       </section>
       <section class="elevator-section hidden">
         <img class="rob-img" src="sprites/rob/rob1.png" onclick="showDialog()">
