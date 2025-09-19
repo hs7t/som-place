@@ -66,11 +66,14 @@
       display: flex;
       justify-content: center;
       position: relative;
+      overflow: hidden;
     }
 
     .start-section {
-      width: 100%;
-      height: 100%;
+      container-type: inline-size;
+      aspect-ratio: 4 / 3;
+      width: min(100vw, 100vh);
+      height: auto;
       background: url("sprites/desert.png");
       background-size: cover;
     }
@@ -78,8 +81,8 @@
     #map-button {
       width: clamp(4rem, 5cqi, 15cqi);
       position: absolute;
-      padding: auto;
       top: 6cqi;
+      right: 6cqi;
       transition: all 400ms;
     }
 
@@ -102,14 +105,17 @@
     }
 
     .start-section .elevator-img {
-      position: fixed;
+      position: absolute;
       bottom: 0;
-      max-height: 60vh;
-      max-width: 100%;
-      height: 100%;
-      object-fit: contain;
+      height: 50cqh;
       cursor: var(--cursor-pointer);
+      transition: all 50ms;
     }
+
+    .start-section .elevator-img:hover {
+      transform: scale(1.05);
+    }
+
 
     .elevator-section {
       container-type: inline-size;
