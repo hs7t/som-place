@@ -100,6 +100,16 @@ async function processElevatorButtonClick() {
   elevatorMusic.pause();
 
   beep.play();
+
+  await playSequence(
+    [
+      { src: "sprites/elevator-button/button2.png" },
+      { src: "sprites/elevator-button/button1.png" },
+    ],
+    200,
+    document.querySelector(".elevator-img")
+  );
+
   beep.on("end", () => {
     elevatorWhirr.play();
     document.querySelector(".elevator-section").classList.add("whirring");
