@@ -139,10 +139,10 @@ async function loopRobSequence() {
 }
 
 async function processRobClick() {
-  showDialog();
+  showDialog("#rob-dialog");
 }
 
-function showDialog() {
+function showDialog(selector) {
   console.log("Open");
-  document.querySelector("dialog").showModal();
+  document.querySelector(selector).showModal();
 }
