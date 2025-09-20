@@ -107,7 +107,7 @@ async function processElevatorButtonClick() {
       { src: "sprites/elevator-button/button1.png" },
     ],
     200,
-    document.querySelector(".elevator-img")
+    document.querySelector(".elevator-button-img")
   );
 
   beep.on("end", () => {
