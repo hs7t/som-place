@@ -138,6 +138,10 @@ async function loopRobSequence() {
   setTimeout(loopRobSequence, 0);
 }
 
+async function processRobClick() {
+  showDialog();
+}
+
 function showDialog() {
   console.log("Open");
   document.querySelector("dialog").showModal();
