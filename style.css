@@ -2,6 +2,22 @@
   box-sizing: border-box;
   --cursor-default: url("sprites/cursor1.png") 0 0, default;
   --cursor-pointer: url("sprites/cursor2.png") 0 0, pointer;
+
+  --nostalgia15-A: #efd0ae;
+  --nostalgia15-B: #f6d937;
+  --nostalgia15-C: #f8a153;
+  --nostalgia15-D: #ef6361;
+  --nostalgia15-E: #c7555e;
+  --nostalgia15-F: #501733;
+  --nostalgia15-G: #71323c;
+  --nostalgia15-H: #975e5e;
+  --nostalgia15-I: #755b6c;
+  --nostalgia15-J: #808faa;
+  --nostalgia15-K: #c4bbb8;
+  --nostalgia15-L: #74a8a2;
+  --nostalgia15-M: #186f5e;
+  --nostalgia15-N: #46a45f;
+  --nostalgia15-O: #88af92;
 }
 
 .hidden {
@@ -136,12 +152,12 @@ section {
 }
 
 .elevator-section dialog {
-  background-color: black;
-  color: white;
-  border: 1cqw solid white;
+  background-color: var(--nostalgia15-K);
+  color: var(--nostalgia15-F);
+  border: solid 4pt var(--nostalgia15-F);
   width: 80cqw;
   min-height: 10cqh;
-  font-size: 2rem;
+  font-size: 1.4rem;
   outline: none;
 }
 
