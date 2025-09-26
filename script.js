@@ -8,6 +8,43 @@ let state = {
   },
 };
 
+const dialogue = {
+  rob: {
+    clicks: [
+      {
+        blocks: [
+          "Hey... Hi there!",
+          "Oh,",
+          "I'm,",
+          "uh, Rob.",
+          "Rob The Rock.",
+          "Rob Rock!",
+          "Haha...",
+        ],
+        repeatable: false,
+      },
+      {
+        blocks: ["Me?", "Yeah,", "I mean...", "So...", "how's it going..."],
+        repeatable: true,
+      },
+      {
+        blocks: ["I'm!", "At your service!!11!!"],
+        repeatable: true,
+      },
+      {
+        blocks: [
+          "Er...",
+          "haha...",
+          "It's hot isn't it?",
+          "Yeah.",
+          "Do you like elevators? I like them!",
+          "Well it's my job, but...",
+        ],
+        repeatable: true,
+      },
+    ],
+  },
+};
 let elevatorMusic = new Howl({
   src: ["audio/elevator.m4a"],
   loop: true,
@@ -128,9 +165,8 @@ async function processElevatorButtonClick() {
 }
 
 async function loopRobSequence() {
-  try {
-    clearTimeout(state.rob.animations.elevatorLoop);
-  } catch {}
+  clearTimeout(state.rob.animations.elevatorLoop);
+  console.log("cleared timeout");
 
   async function loop() {
     await playSequence(
@@ -144,9 +180,11 @@ async function loopRobSequence() {
     );
 
     state.rob.animations.elevatorLoop = setTimeout(loop, 0);
+    console.log("looped");
   }
 
-  state.rob.animations.elevatorLoop = setTimeout(loop, 0);
+  loop();
+  console.log("registered loop");
 }
 
 async function processRobClick() {
