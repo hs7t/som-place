@@ -112,10 +112,15 @@ async function playSequence(
   }
 }
 
-async function writeDialogueToElement(element, textBlocks, delay = 0) {
+async function writeDialogueToElement(
+  element,
+  textBlocks,
+  delay = 0,
+  blockSeparator = " "
+) {
   element.textContent = "";
   for (const block of textBlocks) {
-    element.textContent += block;
+    element.textContent += block + blockSeparator;
     wait(delay);
   }
 }
@@ -197,7 +202,7 @@ async function loopRobSequence() {
 }
 
 async function processRobClick() {
-  showDialog("#rob-dialog");
+  showDialogue("#rob-dialog", dialogue.rob.clicks[0].blocks);
 }
 
 function showDialogue(
@@ -211,5 +216,5 @@ function showDialogue(
 
   console.log("Open");
   writeDialogueToElement(dialogText, dialogueBlocks, delay);
-  document.querySelector(selector).showModal();
+  dialog.showModal();
 }
