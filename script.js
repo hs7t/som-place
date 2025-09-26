@@ -3,6 +3,9 @@ let state = {
     clicks: 0,
     open: false,
   },
+  rob: {
+    animations: {},
+  },
 };
 
 let elevatorMusic = new Howl({
@@ -125,17 +128,25 @@ async function processElevatorButtonClick() {
 }
 
 async function loopRobSequence() {
-  await playSequence(
-    [
-      { src: "sprites/rob/rob1.png" },
-      { src: "sprites/rob/rob2.png" },
-      { src: "sprites/rob/rob3.png" },
-    ],
-    200,
-    document.querySelector(".rob-img")
-  );
+  try {
+    clearTimeout(state.rob.animations.elevatorLoop);
+  } catch {}
 
-  setTimeout(loopRobSequence, 0);
+  async function loop() {
+    await playSequence(
+      [
+        { src: "sprites/rob/rob1.png" },
+        { src: "sprites/rob/rob2.png" },
+        { src: "sprites/rob/rob3.png" },
+      ],
+      200,
+      document.querySelector(".rob-img")
+    );
+
+    state.rob.animations.elevatorLoop = setTimeout(loop, 0);
+  }
+
+  state.rob.animations.elevatorLoop = setTimeout(loop, 0);
 }
 
 async function processRobClick() {
