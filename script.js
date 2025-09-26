@@ -45,6 +45,7 @@ const dialogue = {
     ],
   },
 };
+
 let elevatorMusic = new Howl({
   src: ["audio/elevator.m4a"],
   loop: true,
@@ -108,6 +109,14 @@ async function playSequence(
 
   if (onSequenceEnd) {
     onSequenceEnd();
+  }
+}
+
+async function writeDialogueToElement(element, textBlocks, delay = 0) {
+  element.textContent = "";
+  for (const block of textBlocks) {
+    element.textContent += block;
+    wait(delay);
   }
 }
 
@@ -191,7 +200,16 @@ async function processRobClick() {
   showDialog("#rob-dialog");
 }
 
-function showDialog(selector) {
+function showDialogue(
+  dialogSelector,
+  dialogueBlocks,
+  delay,
+  textSelector = ".dialog-content"
+) {
+  dialog = document.querySelector(dialogSelector);
+  dialogText = dialog.querySelector(textSelector);
+
   console.log("Open");
+  writeDialogueToElement(dialogText, dialogueBlocks, delay);
   document.querySelector(selector).showModal();
 }
