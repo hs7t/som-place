@@ -179,9 +179,6 @@ async function processElevatorButtonClick() {
 }
 
 async function loopRobSequence() {
-  clearTimeout(state.rob.animations.elevatorLoop);
-  console.log("cleared timeout");
-
   async function loop() {
     await playSequence(
       [
@@ -193,8 +190,8 @@ async function loopRobSequence() {
       document.querySelector(".rob-img")
     );
 
+    clearTimeout(state.rob.animations.elevatorLoop);
     state.rob.animations.elevatorLoop = setTimeout(loop, 0);
-    console.log("looped");
   }
 
   loop();
