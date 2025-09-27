@@ -5,6 +5,7 @@ let state = {
   },
   rob: {
     animations: {},
+    clicks: 0,
   },
 };
 
@@ -13,10 +14,12 @@ const dialogue = {
     clicks: [
       {
         blocks: [
-          "Hey... Hi there!",
+          "Hey...",
+          "Hi there!",
           "Oh,",
           "I'm,",
-          "uh, Rob.",
+          "uh,",
+          "Rob.",
           "Rob The Rock.",
           "Rob Rock!",
           "Haha...",
@@ -28,10 +31,6 @@ const dialogue = {
         repeatable: true,
       },
       {
-        blocks: ["I'm!", "At your service!!11!!"],
-        repeatable: true,
-      },
-      {
         blocks: [
           "Er...",
           "haha...",
@@ -39,12 +38,47 @@ const dialogue = {
           "Yeah.",
           "Do you like elevators? I like them!",
           "Well it's my job, but...",
+          "Well,",
+          "I mean,",
+          "it's not really",
+          "*my",
+          "job*",
+          "my job.",
+          "It's,",
+          "uh...",
+          "I'm here",
+          "because Liv asked me to.",
+          "Liv.",
+          "She's the elevator girl.",
+          "This hat is hers!",
         ],
+        repeatable: false,
+      },
+      {
+        blocks: ["I'm!", "At your service!!11!!"],
         repeatable: true,
       },
     ],
   },
 };
+
+function getDialogueForClicks(clicks, clicksDialogueArray) {
+  let repeating = false;
+  let availableDialogue = [];
+
+  if (clicks > clicksDialogueArray.length) {
+    repeating = true;
+    for (let dialogue of clicksDialogueArray) {
+      if (dialogue.repeatable) {
+        availableDialogue.push(dialogue);
+      }
+    }
+  } else {
+    availableDialogue = clicksDialogueArray;
+  }
+
+  return availableDialogue[(clicks - 1) % availableDialogue.length];
+}
 
 let elevatorMusic = new Howl({
   src: ["audio/elevator.m4a"],
@@ -212,7 +246,12 @@ async function loopRobSequence() {
 }
 
 async function processRobClick() {
-  showDialogue("#rob-dialog", dialogue.rob.clicks[0].blocks, 200);
+  state.rob.clicks += 1;
+  showDialogue(
+    "#rob-dialog",
+    getDialogueForClicks(state.rob.clicks, dialogue.rob.clicks).blocks,
+    200
+  );
 }
 
 async function showDialogue(
