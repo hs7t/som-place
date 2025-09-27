@@ -180,7 +180,7 @@ async function processElevatorButtonClick() {
 
 async function loopFunction(functionToLoop, timeoutVariable, loopDelay = 0) {
   async function loop() {
-    functionToLoop();
+    await functionToLoop();
 
     clearTimeout(timeoutVariable);
     timeoutVariable = setTimeout(loop, loopDelay);
