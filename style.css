@@ -20,6 +20,14 @@
   --nostalgia15-O: #88af92;
 }
 
+@font-face {
+  font-family: "NFPixels";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/NFPixels.ttf");
+}
+
 .hidden {
   display: none !important;
 }
@@ -38,7 +46,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Pixelify Sans", monospace, sans-serif;
+  font-family: "NFPixels", monospace, sans-serif;
 
   image-rendering: pixelated;
   background-color: black;
