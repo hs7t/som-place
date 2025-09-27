@@ -178,6 +178,12 @@ async function processElevatorButtonClick() {
   });
 }
 
+async function processMapButtonClick() {
+  dialog = document.querySelector("#map-dialog");
+  console.log(dialog);
+  dialog.showModal();
+}
+
 async function loopFunction(functionToLoop, timeoutVariable, loopDelay = 0) {
   async function loop() {
     await functionToLoop();
