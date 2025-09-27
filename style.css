@@ -99,11 +99,14 @@ section {
   height: 40cqh;
 }
 
-#map-dialog .linkout {
+#map-dialog .linkout, #map-dialog .marker {
   height: 6cqh;
-  cursor: var(--cursor-pointer);
   transition: all 100ms;
   position: absolute;
+}
+
+#map-dialog .linkout {
+  cursor: var(--cursor-pointer);
 }
 
 #map-dialog .linkout.scene-of-the-crime {
