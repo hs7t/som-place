@@ -207,6 +207,13 @@ section {
   }
 }
 
+
+dialog {
+  border: solid 4pt var(--nostalgia15-H);
+  background-color: var(--nostalgia15-A);
+  outline: none;
+}
+
 dialog:not([open]) {
   display: none !important;
 }
