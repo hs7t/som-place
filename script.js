@@ -185,6 +185,8 @@ async function processMapButtonClick() {
 }
 
 async function loopFunction(functionToLoop, timeoutVariable, loopDelay = 0) {
+  clearTimeout(timeoutVariable);
+  
   async function loop() {
     await functionToLoop();
 
