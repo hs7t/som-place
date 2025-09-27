@@ -3,6 +3,9 @@ let state = {
     clicks: 0,
     open: false,
   },
+  elevatorButton: {
+    clicks: 0,
+  },
   rob: {
     animations: {},
     clicks: 0,
@@ -57,6 +60,34 @@ const dialogue = {
       {
         blocks: ["I'm!", "At your service!!11!!"],
         repeatable: true,
+      },
+    ],
+    elevatorButton: [
+      {
+        blocks: [
+          "No",
+          "no!",
+          "It's",
+          "okay!",
+          "I'll",
+          "press it for you!!",
+          "!",
+          "!",
+          "...",
+          "...",
+          ".",
+          ".",
+          ".",
+          "...oh...",
+          "...",
+          ".",
+          ".",
+          ".",
+          "I'm,",
+          "uh...",
+          "stuck...",
+          "here...",
+        ],
       },
     ],
   },
@@ -185,31 +216,37 @@ async function processElevatorClick() {
 }
 
 async function processElevatorButtonClick() {
+  state.elevatorButton.clicks += 1;
   elevatorMusic.pause();
 
-  beep.play();
-
-  await playSequence(
-    [
-      { src: "sprites/elevator-button/button2.png" },
-      { src: "sprites/elevator-button/button1.png" },
-    ],
-    200,
-    document.querySelector(".elevator-button-img")
-  );
-
-  beep.on("end", () => {
-    elevatorWhirr.play();
-    document.querySelector(".elevator-section").classList.add("whirring");
-  });
-
-  elevatorWhirr.on("end", () => {
-    document.querySelector(".elevator-section").classList.remove("whirring");
-    switchScene(
-      document.querySelector(".elevator-section"),
-      document.querySelector(".start-section")
+  if (state.elevatorButton.clicks > 1) {
+    await playSequence(
+      [
+        { src: "sprites/elevator-button/button2.png" },
+        { src: "sprites/elevator-button/button1.png" },
+      ],
+      200,
+      document.querySelector(".elevator-button-img")
     );
-  });
+
+    beep.on("end", () => {
+      elevatorWhirr.play();
+      document.querySelector(".elevator-section").classList.add("whirring");
+    });
+
+    elevatorWhirr.on("end", () => {
+      document.querySelector(".elevator-section").classList.remove("whirring");
+      switchScene(
+        document.querySelector(".elevator-section"),
+        document.querySelector(".start-section")
+      );
+    });
+
+    beep.play();
+  } else {
+    clearTimeout(state.rob.animations.elevatorLoop);
+    showDialogue("#rob-dialog", dialogue.rob.elevatorButton[0].blocks, 300);
+  }
 }
 
 async function processMapButtonClick() {
