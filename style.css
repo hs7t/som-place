@@ -107,12 +107,17 @@ section {
 }
 
 #map-dialog .linkout.scene-of-the-crime {
-  bottom: 6cqi;
+  bottom: 7cqi;
   right: 12cqi;
 }
 
 #map-dialog .linkout.silly-hills {
   right: 6cqi;
+  bottom: 20cqi;
+}
+
+#map-dialog .linkout.sconehenge {
+  bottom: 6cqi;
 }
 
 #map-dialog .linkout:hover {
