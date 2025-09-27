@@ -178,8 +178,19 @@ async function processElevatorButtonClick() {
   });
 }
 
-async function loopRobSequence() {
+async function loopFunction(functionToLoop, timeoutVariable, loopDelay = 0) {
   async function loop() {
+    functionToLoop();
+
+    clearTimeout(timeoutVariable);
+    timeoutVariable = setTimeout(loop, loopDelay);
+  }
+
+  loop();
+}
+
+async function loopRobSequence() {
+  loopFunction(async () => {
     await playSequence(
       [
         { src: "sprites/rob/rob1.png" },
@@ -189,13 +200,7 @@ async function loopRobSequence() {
       200,
       document.querySelector(".rob-img")
     );
-
-    clearTimeout(state.rob.animations.elevatorLoop);
-    state.rob.animations.elevatorLoop = setTimeout(loop, 0);
-  }
-
-  loop();
-  console.log("registered loop");
+  }, state.rob.animations.elevatorLoop);
 }
 
 async function processRobClick() {
