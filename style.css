@@ -90,6 +90,11 @@ section {
   transition: all 100ms;
 }
 
+#map-dialog {
+  width: 80cqw;
+  height: 40cqh;
+}
+
 #crime-scene-linkout {
   position: absolute;
   bottom: 6cqi;
