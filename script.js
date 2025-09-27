@@ -244,8 +244,12 @@ async function processElevatorButtonClick() {
 
     beep.play();
   } else {
-    clearTimeout(state.rob.animations.elevatorLoop);
-    showDialogue("#rob-dialog", dialogue.rob.elevatorButton[0].blocks, 300);
+    await showDialogue(
+      "#rob-dialog",
+      dialogue.rob.elevatorButton[0].blocks,
+      300
+    );
+    elevatorMusic.play();
   }
 }
 
