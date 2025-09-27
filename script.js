@@ -121,7 +121,7 @@ async function writeDialogueToElement(
   element.textContent = "";
   for (const block of textBlocks) {
     element.textContent += block + blockSeparator;
-    wait(delay);
+    await wait(delay);
   }
 }
 
@@ -186,7 +186,7 @@ async function processMapButtonClick() {
 
 async function loopFunction(functionToLoop, timeoutVariable, loopDelay = 0) {
   clearTimeout(timeoutVariable);
-  
+
   async function loop() {
     await functionToLoop();
 
@@ -212,19 +212,19 @@ async function loopRobSequence() {
 }
 
 async function processRobClick() {
-  showDialogue("#rob-dialog", dialogue.rob.clicks[0].blocks);
+  showDialogue("#rob-dialog", dialogue.rob.clicks[0].blocks, 200);
 }
 
-function showDialogue(
+async function showDialogue(
   dialogSelector,
   dialogueBlocks,
-  delay,
+  delay = 0,
   textSelector = ".dialog-content"
 ) {
   dialog = document.querySelector(dialogSelector);
   dialogText = dialog.querySelector(textSelector);
 
   console.log("Open");
-  writeDialogueToElement(dialogText, dialogueBlocks, delay);
   dialog.showModal();
+  await writeDialogueToElement(dialogText, dialogueBlocks, delay);
 }
