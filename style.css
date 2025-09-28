@@ -131,7 +131,7 @@ section {
 .start-section .elevator-img {
   position: absolute;
   bottom: 0;
-  height: 50cqh;
+  height: 60%;
   cursor: var(--cursor-pointer);
   transition: all 50ms;
 }
