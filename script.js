@@ -231,10 +231,10 @@ async function processElevatorButtonClick() {
     await playSequence(
       [
         {
-          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/e6091ab240a7511bc85e93ee458848960ebd1470_button1.png",
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/3c81f6e1eebcf35f327c83ff7e72ac1eb1dc05f1_button2.png",
         },
         {
-          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/3c81f6e1eebcf35f327c83ff7e72ac1eb1dc05f1_button2.png",
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/e6091ab240a7511bc85e93ee458848960ebd1470_button1.png",
         },
       ],
       200,
