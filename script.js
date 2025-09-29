@@ -196,10 +196,18 @@ async function processElevatorClick() {
   if (state.elevator.open == false) {
     await playSequence(
       [
-        { src: "sprites/elevator/elevator1.png" },
-        { src: "sprites/elevator/elevator2.png" },
-        { src: "sprites/elevator/elevator3.png" },
-        { src: "sprites/elevator/elevator4.png" },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/c34c83397b0e9f2c6a0ad3dfcae42b4040bebe18_elevator1.png",
+        },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/027bb41f085dc4f14cb496a83d1ba76ecb6fa519_elevator2.png",
+        },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/a19f90a757f667b8018f29841b917ac0de2e8d85_elevator3.png",
+        },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/042cf445c93e43aa24d96336747561a73f697963_elevator4.png",
+        },
       ],
       100,
       document.querySelector(".elevator-img")
@@ -222,8 +230,12 @@ async function processElevatorButtonClick() {
   if (state.elevatorButton.clicks > 1) {
     await playSequence(
       [
-        { src: "sprites/elevator-button/button2.png" },
-        { src: "sprites/elevator-button/button1.png" },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/e6091ab240a7511bc85e93ee458848960ebd1470_button1.png",
+        },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/3c81f6e1eebcf35f327c83ff7e72ac1eb1dc05f1_button2.png",
+        },
       ],
       200,
       document.querySelector(".elevator-button-img")
@@ -276,9 +288,15 @@ async function loopRobSequence() {
   loopFunction(async () => {
     await playSequence(
       [
-        { src: "sprites/rob/rob1.png" },
-        { src: "sprites/rob/rob2.png" },
-        { src: "sprites/rob/rob3.png" },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/18b85cca673fb3c74ccfff96ca233f0167e6f8d7_rob1.png",
+        },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/c4535d53565885fe7e8cc4e4ef0e11832a717047_rob2.png",
+        },
+        {
+          src: "https://hc-cdn.hel1.your-objectstorage.com/s/v3/601ed47cdbcf1ef3a26c9ad240431f2f0ab4391b_rob3.png",
+        },
       ],
       200,
       document.querySelector(".rob-img")
