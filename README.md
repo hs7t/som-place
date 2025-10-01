@@ -31,4 +31,4 @@ npx http-server .
 
 ## Credits
 
-- [howler.js](https://howlerjs.org/), an awesome sound library 
+- [howler.js](https://howlerjs.com/), an awesome sound library 
