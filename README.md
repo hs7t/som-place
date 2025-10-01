@@ -1,6 +1,6 @@
 # Supremely Uncomfortable Place (70)
 
-Supremely Uncomfortable Place is one of the scenes in the [Summer Of Making](https://summer.hackclub.com/) [Grand Survey Expedition](https://summer.hackclub.com/s), a collaborative point and click game
+Supremely Uncomfortable Place is one of the scenes in the [Summer Of Making](https://summer.hackclub.com/) [Grand Survey Expedition](https://summer.hackclub.com/s), a collaborative point and click game.
 
 ## What’s there?
 - meet Rob, an awkward rock!
