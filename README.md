@@ -32,3 +32,4 @@ npx http-server .
 ## Credits
 
 - [howler.js](https://howlerjs.com/), an awesome sound library 
+- [NF Pixels](https://github.com/sgigou/NF-Pixels), a really cool font by [sgigou](https://github.com/sgigou/)!!
